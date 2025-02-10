@@ -8,6 +8,7 @@ import SignUpPage from "./routes/sign-up";
 import SignInPage from "./routes/sign-in";
 import ProtectedRoute from "./layouts/protectedroute";
 import MainLayout from "./layouts/main-layout";
+import Chatting from "./routes/Chatting/Chatting";
 
 const App: React.FC = () => {
   return (
@@ -15,10 +16,14 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<PublicLayout />}>
           <Route index element={<HomePage />} />
-        </Route>
+          <Route path="chatting" element={<Chatting />} />          
+      </Route>
+
+    
 
         
         <Route path="/" element={<AuthLayout />}>
+          
           <Route path="/signin/*" element={<SignInPage />} />
           <Route path="/signup/*" element={<SignUpPage />} />
         </Route>

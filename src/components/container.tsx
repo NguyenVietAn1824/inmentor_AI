@@ -8,7 +8,7 @@ interface ContainerProps {
 export const Container = ({ children, className }: ContainerProps) => {
   return (
     <div
-      className={cn("flex container w-full", className)}
+      className={cn("flex container mx-auto w-full", className)}
     >
       {children}
     </div>

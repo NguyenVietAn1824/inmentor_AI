@@ -6,13 +6,9 @@ import AuthHanlder from "../handler/auth-handler";
 
 const PublicLayout: React.FC = () => {
   return (
-    <div className="w-full">
+    <div>
       <AuthHanlder  />
-      <Header />
-      <Container>
         <Outlet />
-      </Container>
-      <Footer />
     </div>
   );
 };

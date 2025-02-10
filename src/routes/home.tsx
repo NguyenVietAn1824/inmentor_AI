@@ -5,109 +5,118 @@ import { Container } from "../components/container";
 import { Button } from "../components/ui/button";
 import { Link } from "react-router-dom";
 
+const MarqueeImg = ({ img }: { img: string }) => (
+  <div className="mx-8">
+    <img src={img} alt="" className="h-12 w-auto object-contain" />
+  </div>
+);
+
+const FeatureCard = ({ title, description }: { title: string; description: string }) => (
+  <div className="p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-all border">
+    <h3 className="text-xl font-semibold mb-2">{title}</h3>
+    <p className="text-gray-600">{description}</p>
+  </div>
+);
+
 const HomePage = () => {
   return (
-    <div className="flex-col w-full pb-24">
-      <Container>
-        <div className="my-8">
-          <h2 className="text-3xl text-center md:text-left md:text-6xl">
-            <span className=" text-outline font-extrabold md:text-8xl">
-              AI Superpower
-            </span>
-            <span className="text-gray-500 font-extrabold">
-              - A better way to
-            </span>
-            <br />
-            improve your interview chances and skills
-          </h2>
-
-          <p className="mt-4 text-muted-foreground text-sm">
-            Boost your interview skills and increase your success rate with
-            AI-driven insights. Discover a smarter way to prepare, practice, and
-            stand out.
-          </p>
-        </div>
-
-        <div className="flex w-full items-center justify-evenly md:px-12 md:py-16 md:items-center md:justify-end gap-12">
-          <p className="text-3xl font-semibold text-gray-900 text-center">
-            250k+
-            <span className="block text-xl text-muted-foreground font-normal">
-              Offers Recieved
-            </span>
-          </p>
-          <p className="text-3xl font-semibold text-gray-900 text-center">
-            1.2M+
-            <span className="block text-xl text-muted-foreground font-normal">
-              Interview Aced
-            </span>
-          </p>
-        </div>
-
-        {/* image section */}
-        <div className="w-full mt-4 rounded-xl bg-gray-100 h-[420px] drop-shadow-md overflow-hidden relative">
-          <img
-            src="/assets/img/hero.jpg"
-            alt=""
-            className="w-full h-full object-cover"
-          />
-
-          <div className="absolute top-4 left-4 px-4 py-2 rounded-md bg-white/40 backdrop-blur-md">
-            Inteviews Copilot&copy;
-          </div>
-
-          <div className="hidden md:block absolute w-80 bottom-4 right-4 px-4 py-2 rounded-md bg-white/60 backdrop-blur-md">
-            <h2 className="text-neutral-800 font-semibold">Developer</h2>
-            <p className="text-sm text-neutral-500">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              distinctio natus, quos voluptatibus magni sapiente.
+    <div className="flex flex-col items-center w-full">
+      {/* Hero Section */}
+      <div className="relative w-full bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+        <Container className="py-20">
+          <div className="max-w-4xl mx-auto text-center px-4">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+              Master Your 
+              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                {" "}Interview Skills
+              </span>
+            </h1>
+            <p className="mt-6 text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto px-4">
+              Level up your interview performance with AI-powered practice, real-time feedback, 
+              and personalized coaching.
             </p>
+            <div className="mt-10 flex flex-wrap gap-4 justify-center px-4">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                Try Now <Sparkles className="ml-2" />
+              </Button>
+              <Button size="lg" variant="outline">
+                Learn More
+              </Button>
+            </div>
+          </div>
+          
+          {/* Stats Grid */}
+          <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-5xl mx-auto px-4">
+            {[
+              { number: "250k+", label: "Offers Received" },
+              { number: "1.2M+", label: "Interviews Aced" },
+              { number: "98%", label: "Success Rate" },
+              { number: "24/7", label: "AI Support" }
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-4xl font-bold text-blue-600">{stat.number}</div>
+                <div className="mt-2 text-gray-600">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </div>
 
-            <Button className="mt-3">
-              Generate <Sparkles />
-            </Button>
+      {/* Features Grid */}
+      <Container className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+            Everything you need to succeed
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <FeatureCard
+              title="AI Interview Practice"
+              description="Practice with our AI interviewer that adapts to your responses and provides instant feedback."
+            />
+            <FeatureCard
+              title="Custom Questions"
+              description="Get personalized questions based on your industry, role, and experience level."
+            />
+            <FeatureCard
+              title="Real-time Analytics"
+              description="Track your progress and identify areas for improvement with detailed performance metrics."
+            />
           </div>
         </div>
       </Container>
 
-      {/* marquee section */}
-      {/* <div className=" w-full my-12">
-        <Marquee pauseOnHover>
-          <MarqueImg img="/assets/img/logo/firebase.png" />
-          <MarqueImg img="/assets/img/logo/meet.png" />
-          <MarqueImg img="/assets/img/logo/zoom.png" />
-          <MarqueImg img="/assets/img/logo/firebase.png" />
-          <MarqueImg img="/assets/img/logo/microsoft.png" />
-          <MarqueImg img="/assets/img/logo/meet.png" />
-          <MarqueImg img="/assets/img/logo/tailwindcss.png" />
-          <MarqueImg img="/assets/img/logo/microsoft.png" />
-        </Marquee>
-      </div> */}
+      {/* Marquee Section */}
+      <div className="w-full bg-gray-50 py-12">
+        <div className="max-w-6xl mx-auto">
+          <h3 className="text-center text-gray-600 mb-8 px-4">
+            Trusted by leading companies
+          </h3>
+          <Marquee pauseOnHover gradient gradientWidth={100} className="py-4">
+            <MarqueeImg img="/assets/img/logo/firebase.png" />
+            <MarqueeImg img="/assets/img/logo/meet.png" />
+            <MarqueeImg img="/assets/img/logo/zoom.png" />
+            <MarqueeImg img="/assets/img/logo/firebase.png" />
+            <MarqueeImg img="/assets/img/logo/microsoft.png" />
+            <MarqueeImg img="/assets/img/logo/meet.png" />
+            <MarqueeImg img="/assets/img/logo/tailwindcss.png" />
+            <MarqueeImg img="/assets/img/logo/microsoft.png" />
+          </Marquee>
+        </div>
+      </div>
 
-      <Container className="py-8 space-y-8">
-        <h2 className="tracking-wide text-xl text-gray-800 font-semibold">
-          Unleash your potential with personalized AI insights and targeted
-          interview practice.
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
-          <div className="col-span-1 md:col-span-3">
-            <img
-              src="/assets/img/office.jpg"
-              alt=""
-              className="w-full max-h-96 rounded-md object-cover"
-            />
-          </div>
-
-          <div className="col-span-1 md:col-span-2 gap-8 max-h-96 min-h-96 w-full flex flex-col items-center justify-center text-center">
-            <p className="text-center text-muted-foreground">
-              Transform the way you prepare, gain confidence, and boost your
-              chances of landing your dream job. Let AI be your edge in
-              today&apos;s competitive job market.
+      {/* CTA Section */}
+      <Container className="py-20">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="bg-blue-600 text-white rounded-2xl p-8 md:p-12 text-center">
+            <h2 className="text-2xl md:text-4xl font-bold mb-6">
+              Ready to transform your interview skills?
+            </h2>
+            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+              Join thousands of successful candidates who have mastered their interview skills with our AI-powered platform.
             </p>
-
-            <Link to={"/generate"} className="w-full">
-              <Button className="w-3/4">
-                Generate <Sparkles className="ml-2" />
+            <Link to="/generate">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 px-8">
+                Get Started <Sparkles className="ml-2" />
               </Button>
             </Link>
           </div>

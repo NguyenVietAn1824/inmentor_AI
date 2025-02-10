@@ -15,4 +15,8 @@ export const MainRoutes = [
     label: "Services",
     href: "/services",
   },
+  {
+    label: "Chatting",
+    href: "/chatting",
+  },
 ];
